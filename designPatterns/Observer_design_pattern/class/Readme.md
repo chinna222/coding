@@ -2,7 +2,8 @@
 
 ## Prototype approach
 
-`class Rectangle {
+```
+class Rectangle {
 constructor(height, width) {
 this.height = height;
 this.width = width;
@@ -12,11 +13,14 @@ this.area = this.getArea(); // Calling getArea within the constructor to set the
 getArea() {
 return this.height \* this.width;
 }
-}`
+}
+
+```
 
 ## Instance Approach
 
-`class Rectangle {
+```
+class Rectangle {
 constructor(height, width) {
 this.height = height;
 this.width = width;
@@ -26,7 +30,9 @@ this.width = width;
     };
 
 }
-}`
+}
+
+```
 
 In both cases, you create a Rectangle object and call myRectangle.getArea() to get the area. The difference lies in how the getArea function is attached to the Rectangle object and the implications of that difference:
 
@@ -59,7 +65,8 @@ console.log(myRectangle.getArea()); // Now outputs the perimeter instead: 30`
 
 If you define the method inside the constructor and later change the method on one instance, it will not affect other instances, since each instance has its own copy of the method.
 
-`class Rectangle {
+```
+class Rectangle {
 constructor(height, width) {
 this.height = height;
 this.width = width;
@@ -71,6 +78,9 @@ this.width = width;
 }
 }
 
+```
+
+```
 const myRectangle1 = new Rectangle(10, 5);
 const myRectangle2 = new Rectangle(3, 2);
 
@@ -78,6 +88,8 @@ const myRectangle2 = new Rectangle(3, 2);
 myRectangle1.getArea = function() {
 return 2 \* (this.height + this.width);
 };
+
+```
 
 console.log(myRectangle1.getArea()); // Outputs the perimeter for myRectangle1: 30
 console.log(myRectangle2.getArea()); // Still outputs the area for myRectangle2: 6`
