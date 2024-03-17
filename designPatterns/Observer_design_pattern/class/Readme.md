@@ -4,16 +4,17 @@
 
 ```
 class Rectangle {
-constructor(height, width) {
-this.height = height;
-this.width = width;
-this.area = this.getArea(); // Calling getArea within the constructor to set the area property
+    constructor(height, width) {
+        this.height = height;
+        this.width = width;
+        this.getArea = function() {
+            return this.height * this.width;
+        }; // Defining getArea within the constructor
+    }
 }
 
-getArea() {
-return this.height \* this.width;
-}
-}
+const myRectangle1 = new Rectangle(10, 5);
+console.log(myRectangle1.getArea()); // Outputs the perimeter for myRectangle1: 30
 
 ```
 
@@ -21,9 +22,9 @@ return this.height \* this.width;
 
 ```
 class Rectangle {
-constructor(height, width) {
-this.height = height;
-this.width = width;
+    constructor(height, width) {
+    this.height = height;
+    this.width = width;
 
     this.getArea = function() {
       return this.height * this.width;
