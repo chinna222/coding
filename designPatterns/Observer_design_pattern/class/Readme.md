@@ -44,21 +44,7 @@ Despite these differences, the way you call the method doesn't change. The choic
 
 When a method is defined on the prototype, changing it dynamically will affect all instances of that class, because they all share the same prototype. However, when methods are defined within the constructor (the instance approach), they are specific to each instance, so changing the method on one instance won't affect the others.
 
-EX:
-
-```
-class Rectangle {
-    constructor(height, width) {
-        this.height = height;
-        this.width = width;
-    }
-    getArea() {
-    return this.height \* this.width;
-    }
-}
-
-```
-
+Like
 // Change the getArea method for all instances
 Rectangle.prototype.getArea = function() {
 return 2 \* (this.height + this.width);
