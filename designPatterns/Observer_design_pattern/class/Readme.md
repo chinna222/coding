@@ -25,12 +25,10 @@ class Rectangle {
     constructor(height, width) {
     this.height = height;
     this.width = width;
-
-    this.getArea = function() {
+    }
+    getArea = function() {
       return this.height * this.width;
     };
-
-}
 }
 
 ```
