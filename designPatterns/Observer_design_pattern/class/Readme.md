@@ -68,15 +68,13 @@ If you define the method inside the constructor and later change the method on o
 
 ```
 class Rectangle {
-constructor(height, width) {
-this.height = height;
-this.width = width;
-
+    constructor(height, width) {
+    this.height = height;
+    this.width = width;
     this.getArea = function() {
       return this.height * this.width;
     };
-
-}
+    }
 }
 
 ```
@@ -87,7 +85,7 @@ const myRectangle2 = new Rectangle(3, 2);
 
 // Change the getArea method only for myRectangle1
 myRectangle1.getArea = function() {
-return 2 \* (this.height + this.width);
+    return 2 \* (this.height + this.width);
 };
 
 ```
