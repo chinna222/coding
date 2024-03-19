@@ -1,4 +1,4 @@
-# Class
+# Interesting points about class
 
 ## Prototype approach
 
