@@ -7,10 +7,10 @@ class Rectangle {
     constructor(height, width) {
         this.height = height;
         this.width = width;
-        this.getArea = function() {
-            return this.height * this.width;
-        }; // Defining getArea within the constructor
     }
+    getArea = function() {
+        return this.height * this.width;
+    };
 }
 
 const myRectangle1 = new Rectangle(10, 5);
@@ -25,10 +25,11 @@ class Rectangle {
     constructor(height, width) {
     this.height = height;
     this.width = width;
-    }
-    getArea = function() {
+    this.getArea = function() {
       return this.height * this.width;
-    };
+    }; // Defining getArea within the constructor
+
+}
 }
 
 ```
