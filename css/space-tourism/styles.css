@@ -7,7 +7,7 @@
   --clr-white: 0 0% 100%;
 
   /* font sizes */
-  --fs-900: 9.375rem;
+  --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
   --fs-800: 6.25rem;
   --fs-700: 3.5rem;
   --fs-600: 2rem;
@@ -22,6 +22,37 @@
   --ff-serif: "Bellefair", serif;
   --ff-sans-cond: "Barlow Condensed", sans-serif;
   --ff-sans-normal: "Barlow", sans-serif;
+}
+
+@media (min-width: 35em) {
+  :root {
+    --fs-800: 5rem;
+    --fs-700: 2.5rem;
+    --fs-600: 1.5rem;
+    --fs-500: 1.25rem;
+    --fs-400: 1rem;
+  }
+}
+
+@media (min-width: 45em) {
+  /* should use em for media queries because 
+1️⃣ Respects User Preferences
+    If the user changes their default browser font size, em adapts automatically.
+    rem stays tied to the root font size (html { font-size: 16px; } by default), making it less flexible.
+2️⃣ More Responsive to Zooming
+    Browsers often scale layouts based on em values when zooming, making your site more accessible.
+    rem does not scale as well in this case.
+3️⃣ Standard Across Browsers
+    Most modern CSS frameworks and best practices recommend using em in media queries.
+ */
+  :root {
+    /* font-sizes */
+    --fs-800: 6.25rem;
+    --fs-700: 3.5rem;
+    --fs-600: 2rem;
+    --fs-500: 1.75rem;
+    --fs-400: 1.125rem;
+  }
 }
 
 /* Reset section */
@@ -290,3 +321,43 @@ select {
     grid-column: 3;
   }
 }
+
+/* Why Use em for Button and Link Padding?
+    ✅ Short Answer:
+    Using em for padding in buttons and links ensures that the padding scales with the font size of the element, making it more responsive and flexible.
+
+    🔹 Understanding em vs. rem for Padding
+    Unit	Based On	Best Used For
+    rem	Root font size (html font-size)	Global spacing (e.g., margins, sections, layouts)
+    em	The element’s own font size	Padding inside buttons, links, input fields
+    📌 Why Use em for Padding in Buttons & Links?
+    1️⃣ Scales with Font Size
+
+    If you increase a button's font-size, the padding grows proportionally.
+    Example:
+    button {
+    font-size: 1.25em;  /* Larger font
+    padding: 0.5em 1em;  Padding scales with font 
+    }
+    If font-size: 20px, then:
+    0.5em = 10px
+    1em = 20px
+    If the font size changes, padding adjusts automatically!
+    2️⃣ Keeps Buttons & Links Balanced
+
+    em ensures that the button looks proportionate regardless of font size.
+    If rem were used, padding would remain fixed, potentially making the button look too large or too small.
+    3️⃣ Improves Accessibility & Readability
+
+    Users who increase their browser's font size (for accessibility reasons) will also see proportionally larger buttons, making them easier to interact with.
+
+When to Use rem Instead?
+    For layout-based spacing (margins, sections, containers):
+    .section {
+        margin-bottom: 2rem; /* Consistent across the whole site 
+    }
+    For global button sizes (if you don’t want padding to change with font-size):
+    button {
+        padding: 12px 24px; /* Fixed size, doesn't scale with text 
+    }
+*/
