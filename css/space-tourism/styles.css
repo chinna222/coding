@@ -263,21 +263,30 @@ select {
 }
 
 .grid-container {
+  /* by default we are showing only one column and added media query for large screens */
+  text-align: center;
+  place-items: center;
   border: 1px solid red;
   display: grid;
-  column-gap: var(--container-gap, 2rem);
-  grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(
-      2rem,
-      1fr
-    );
 }
 
-.grid-container > *:first-child {
-  border: 1px solid blue;
-  grid-column: 2;
-}
+@media (min-width: 45rem) {
+  /* Large screen that is if screen width is atleast has 45rem  */
+  .grid-container {
+    text-align: left;
+    column-gap: var(--container-gap, 2rem);
+    grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(
+        1rem,
+        1fr
+      );
+  }
+  .grid-container > *:first-child {
+    border: 1px solid blue;
+    grid-column: 2;
+  }
 
-.grid-container > *:last-child {
-  border: 1px solid yellow;
-  grid-column: 3;
+  .grid-container > *:last-child {
+    border: 1px solid yellow;
+    grid-column: 3;
+  }
 }
