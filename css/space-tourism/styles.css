@@ -147,6 +147,42 @@ select {
   margin-inline: auto;
 }
 
+.grid-container {
+  /* by default we are showing only one column and added media query for large screens */
+  text-align: center;
+  place-items: center;
+  display: grid;
+  row-gap: 10%;
+  padding-inline: 1rem;
+}
+
+.grid-container * {
+  max-width: 50ch;
+}
+
+@media (min-width: 45rem) {
+  /* Large screen that is if screen width is atleast has 45rem  */
+  .grid-container {
+    text-align: left;
+    column-gap: var(--container-gap, 2rem);
+    grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(
+        1rem,
+        1fr
+      );
+  }
+  .grid-container--home {
+    padding-bottom: max(6rem, 20vh);
+    align-items: end;
+  }
+  .grid-container > *:first-child {
+    grid-column: 2;
+  }
+
+  .grid-container > *:last-child {
+    grid-column: 3;
+  }
+}
+
 /* technologies that will read page for visully impaired  */
 /* add this class to any element it will not be visually there but will be there for screen readers */
 .sr-only {
@@ -157,25 +193,11 @@ select {
   margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
+  white-space: nowrap; /* added line */
   border: 0;
 }
 
-.uppercase {
-  text-transform: uppercase;
-}
-
-.letter-spacing-1 {
-  letter-spacing: 4.75px;
-}
-
-.letter-spacing-2 {
-  letter-spacing: 2.7px;
-}
-
-.letter-spacing-3 {
-  letter-spacing: 2.35px;
-}
+/* colors */
 
 .bg-dark {
   background-color: hsl(var(--clr-dark));
@@ -195,6 +217,32 @@ select {
 }
 .text-white {
   color: hsl(var(--clr-white));
+}
+
+/* typography */
+
+.ff-serif {
+  font-family: var(--ff-serif);
+}
+.ff-sans-cond {
+  font-family: var(--ff-sans-cond);
+}
+.ff-sans-normal {
+  font-family: var(--ff-sans-normal);
+}
+
+.letter-spacing-1 {
+  letter-spacing: 4.75px;
+}
+.letter-spacing-2 {
+  letter-spacing: 2.7px;
+}
+.letter-spacing-3 {
+  letter-spacing: 2.35px;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 .fs-900 {
@@ -229,14 +277,17 @@ select {
   line-height: 1.1;
 }
 
-.color-container {
-  flex: 1;
+.numbered-title {
+  font-family: var(--ff-sans-cond);
+  font-size: var(--fs-500);
+  text-transform: uppercase;
+  letter-spacing: 4.72px;
 }
 
-.color-box {
-  border: 1px solid pink;
-  height: 100px;
-  padding: 3rem 0.5rem 1rem 2rem;
+.numbered-title span {
+  margin-right: 0.5em;
+  font-weight: 700;
+  color: hsl(var(--clr-white) / 0.25);
 }
 
 .large-button {
@@ -298,42 +349,6 @@ select {
   border-color: hsl(var(--clr-white) / 1);
 }
 
-.grid-container {
-  /* by default we are showing only one column and added media query for large screens */
-  text-align: center;
-  place-items: center;
-  display: grid;
-  row-gap: 10%;
-  padding-inline: 1rem;
-}
-
-.grid-container * {
-  max-width: 50ch;
-}
-
-@media (min-width: 45rem) {
-  /* Large screen that is if screen width is atleast has 45rem  */
-  .grid-container {
-    text-align: left;
-    column-gap: var(--container-gap, 2rem);
-    grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(
-        1rem,
-        1fr
-      );
-  }
-  .grid-container--home {
-    padding-bottom: max(6rem, 20vh);
-    align-items: end;
-  }
-  .grid-container > *:first-child {
-    grid-column: 2;
-  }
-
-  .grid-container > *:last-child {
-    grid-column: 3;
-  }
-}
-
 /* Why Use em for Button and Link Padding?
     ✅ Short Answer:
     Using em for padding in buttons and links ensures that the padding scales with the font size of the element, making it more responsive and flexible.
@@ -378,18 +393,20 @@ body {
   background-size: cover;
   background-position: bottom center;
 }
+/* home */
 .home {
   background-image: url(./assets/home/background-home-mobile.jpg);
+}
+
+@media (min-width: 35rem) {
+  .home {
+    background-position: center center;
+    background-image: url(./assets/home/background-home-tablet.jpg);
+  }
 }
 
 @media (min-width: 45rem) {
   .home {
     background-image: url(./assets/home/background-home-desktop.jpg);
-  }
-}
-
-@media (min-width: 35rem) {
-  .home {
-    background-image: url(./assets/home/background-home-tablet.jpg);
   }
 }
