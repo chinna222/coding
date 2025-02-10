@@ -36,15 +36,15 @@
 
 @media (min-width: 45em) {
   /* should use em for media queries because 
-1️⃣ Respects User Preferences
-    If the user changes their default browser font size, em adapts automatically.
-    rem stays tied to the root font size (html { font-size: 16px; } by default), making it less flexible.
-2️⃣ More Responsive to Zooming
-    Browsers often scale layouts based on em values when zooming, making your site more accessible.
-    rem does not scale as well in this case.
-3️⃣ Standard Across Browsers
-    Most modern CSS frameworks and best practices recommend using em in media queries.
- */
+  1️⃣ Respects User Preferences
+      If the user changes their default browser font size, em adapts automatically.
+      rem stays tied to the root font size (html { font-size: 16px; } by default), making it less flexible.
+  2️⃣ More Responsive to Zooming
+      Browsers often scale layouts based on em values when zooming, making your site more accessible.
+      rem does not scale as well in this case.
+  3️⃣ Standard Across Browsers
+      Most modern CSS frameworks and best practices recommend using em in media queries.
+   */
   :root {
     /* font-sizes */
     --fs-800: 6.25rem;
@@ -147,42 +147,6 @@ select {
   margin-inline: auto;
 }
 
-.grid-container {
-  /* by default we are showing only one column and added media query for large screens */
-  text-align: center;
-  place-items: center;
-  display: grid;
-  row-gap: 10%;
-  padding-inline: 1rem;
-}
-
-.grid-container * {
-  max-width: 50ch;
-}
-
-@media (min-width: 45rem) {
-  /* Large screen that is if screen width is atleast has 45rem  */
-  .grid-container {
-    text-align: left;
-    column-gap: var(--container-gap, 2rem);
-    grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(
-        1rem,
-        1fr
-      );
-  }
-  .grid-container--home {
-    padding-bottom: max(6rem, 20vh);
-    align-items: end;
-  }
-  .grid-container > *:first-child {
-    grid-column: 2;
-  }
-
-  .grid-container > *:last-child {
-    grid-column: 3;
-  }
-}
-
 /* technologies that will read page for visully impaired  */
 /* add this class to any element it will not be visually there but will be there for screen readers */
 .sr-only {
@@ -193,11 +157,25 @@ select {
   margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
-  white-space: nowrap; /* added line */
+  white-space: nowrap;
   border: 0;
 }
 
-/* colors */
+.uppercase {
+  text-transform: uppercase;
+}
+
+.letter-spacing-1 {
+  letter-spacing: 4.75px;
+}
+
+.letter-spacing-2 {
+  letter-spacing: 2.7px;
+}
+
+.letter-spacing-3 {
+  letter-spacing: 2.35px;
+}
 
 .bg-dark {
   background-color: hsl(var(--clr-dark));
@@ -217,32 +195,6 @@ select {
 }
 .text-white {
   color: hsl(var(--clr-white));
-}
-
-/* typography */
-
-.ff-serif {
-  font-family: var(--ff-serif);
-}
-.ff-sans-cond {
-  font-family: var(--ff-sans-cond);
-}
-.ff-sans-normal {
-  font-family: var(--ff-sans-normal);
-}
-
-.letter-spacing-1 {
-  letter-spacing: 4.75px;
-}
-.letter-spacing-2 {
-  letter-spacing: 2.7px;
-}
-.letter-spacing-3 {
-  letter-spacing: 2.35px;
-}
-
-.uppercase {
-  text-transform: uppercase;
 }
 
 .fs-900 {
@@ -277,17 +229,14 @@ select {
   line-height: 1.1;
 }
 
-.numbered-title {
-  font-family: var(--ff-sans-cond);
-  font-size: var(--fs-500);
-  text-transform: uppercase;
-  letter-spacing: 4.72px;
+.color-container {
+  flex: 1;
 }
 
-.numbered-title span {
-  margin-right: 0.5em;
-  font-weight: 700;
-  color: hsl(var(--clr-white) / 0.25);
+.color-box {
+  border: 1px solid pink;
+  height: 100px;
+  padding: 3rem 0.5rem 1rem 2rem;
 }
 
 .large-button {
@@ -326,6 +275,24 @@ select {
   margin: 0;
 }
 
+@media (max-width: 35rem) {
+  .primary-navigation {
+    --underline-gap: 0.5rem;
+    position: fixed;
+    z-index: 1000;
+    inset: 0 0 0 30%;
+    background: black;
+    list-style: none;
+    padding: min(20rem, 15vh) 2rem;
+    margin: 0;
+    flex-direction: column;
+  }
+
+  .primary-navigation.underline-indicators > .active {
+    border: 0;
+  }
+}
+
 .primary-navigation a {
   text-decoration: none;
 }
@@ -349,64 +316,98 @@ select {
   border-color: hsl(var(--clr-white) / 1);
 }
 
+.grid-container {
+  /* by default we are showing only one column and added media query for large screens */
+  text-align: center;
+  place-items: center;
+  display: grid;
+  row-gap: 10%;
+  padding-inline: 1rem;
+}
+
+.grid-container * {
+  max-width: 50ch;
+}
+
+@media (min-width: 45rem) {
+  /* Large screen that is if screen width is atleast has 45rem  */
+  .grid-container {
+    text-align: left;
+    column-gap: var(--container-gap, 2rem);
+    grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(
+        1rem,
+        1fr
+      );
+  }
+  .grid-container--home {
+    padding-bottom: max(6rem, 20vh);
+    align-items: end;
+  }
+  .grid-container > *:first-child {
+    grid-column: 2;
+  }
+
+  .grid-container > *:last-child {
+    grid-column: 3;
+  }
+}
+
 /* Why Use em for Button and Link Padding?
-    ✅ Short Answer:
-    Using em for padding in buttons and links ensures that the padding scales with the font size of the element, making it more responsive and flexible.
-
-    🔹 Understanding em vs. rem for Padding
-    Unit	Based On	Best Used For
-    rem	Root font size (html font-size)	Global spacing (e.g., margins, sections, layouts)
-    em	The element’s own font size	Padding inside buttons, links, input fields
-    📌 Why Use em for Padding in Buttons & Links?
-    1️⃣ Scales with Font Size
-
-    If you increase a button's font-size, the padding grows proportionally.
-    Example:
-    button {
-    font-size: 1.25em;  /* Larger font
-    padding: 0.5em 1em;  Padding scales with font 
-    }
-    If font-size: 20px, then:
-    0.5em = 10px
-    1em = 20px
-    If the font size changes, padding adjusts automatically!
-    2️⃣ Keeps Buttons & Links Balanced
-
-    em ensures that the button looks proportionate regardless of font size.
-    If rem were used, padding would remain fixed, potentially making the button look too large or too small.
-    3️⃣ Improves Accessibility & Readability
-
-    Users who increase their browser's font size (for accessibility reasons) will also see proportionally larger buttons, making them easier to interact with.
-
-When to Use rem Instead?
-    For layout-based spacing (margins, sections, containers):
-    .section {
-        margin-bottom: 2rem; /* Consistent across the whole site 
-    }
-    For global button sizes (if you don’t want padding to change with font-size):
-    button {
-        padding: 12px 24px; /* Fixed size, doesn't scale with text 
-    }
-*/
+      ✅ Short Answer:
+      Using em for padding in buttons and links ensures that the padding scales with the font size of the element, making it more responsive and flexible.
+  
+      🔹 Understanding em vs. rem for Padding
+      Unit	Based On	Best Used For
+      rem	Root font size (html font-size)	Global spacing (e.g., margins, sections, layouts)
+      em	The element’s own font size	Padding inside buttons, links, input fields
+      📌 Why Use em for Padding in Buttons & Links?
+      1️⃣ Scales with Font Size
+  
+      If you increase a button's font-size, the padding grows proportionally.
+      Example:
+      button {
+      font-size: 1.25em;  /* Larger font
+      padding: 0.5em 1em;  Padding scales with font 
+      }
+      If font-size: 20px, then:
+      0.5em = 10px
+      1em = 20px
+      If the font size changes, padding adjusts automatically!
+      2️⃣ Keeps Buttons & Links Balanced
+  
+      em ensures that the button looks proportionate regardless of font size.
+      If rem were used, padding would remain fixed, potentially making the button look too large or too small.
+      3️⃣ Improves Accessibility & Readability
+  
+      Users who increase their browser's font size (for accessibility reasons) will also see proportionally larger buttons, making them easier to interact with.
+  
+  When to Use rem Instead?
+      For layout-based spacing (margins, sections, containers):
+      .section {
+          margin-bottom: 2rem; /* Consistent across the whole site 
+      }
+      For global button sizes (if you don’t want padding to change with font-size):
+      button {
+          padding: 12px 24px; /* Fixed size, doesn't scale with text 
+      }
+  */
 
 body {
   background-size: cover;
   background-position: bottom center;
 }
-/* home */
 .home {
   background-image: url(./assets/home/background-home-mobile.jpg);
-}
-
-@media (min-width: 35rem) {
-  .home {
-    background-position: center center;
-    background-image: url(./assets/home/background-home-tablet.jpg);
-  }
 }
 
 @media (min-width: 45rem) {
   .home {
     background-image: url(./assets/home/background-home-desktop.jpg);
+  }
+}
+
+@media (min-width: 35rem) {
+  .home {
+    background-image: url(./assets/home/background-home-tablet.jpg);
   }
 }
