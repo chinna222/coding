@@ -24,8 +24,18 @@
   <body class="home">
     <header class="primary-header flex">
       <div><img src="./assets/shared/logo.svg" /></div>
+      <button
+        class="mobile-nav-toggle"
+        aria-controls="primary-navigation"
+        aria-expanded="false"
+      >
+        <span class="sr-only"></span>
+      </button>
       <nav>
-        <ul class="primary-navigation flex underline-indicators">
+        <ul
+          id="primary-navigation"
+          class="primary-navigation flex underline-indicators"
+        >
           <li class="active">
             <a class="uppercase letter-spacing-2 text-white" href="index.html"
               ><span>00</span>Home</a
@@ -75,5 +85,6 @@
         >
       </div>
     </main>
+    <script src="script.js"></script>
   </body>
 </html>
