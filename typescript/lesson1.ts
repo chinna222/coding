@@ -39,7 +39,7 @@ type BoolorString = boolean | string;
 let xx: BoolorString = Math.random() > 0.5 ? "" : true;
 
 const obj = {
-  success: true as const,
+  success: true as const, // this means sucess should always be true
   paylaod: {},
 };
 
